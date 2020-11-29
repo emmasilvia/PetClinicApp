@@ -1,52 +1,20 @@
 package Repository;
 
 import Connection.HibernateUtils;
-import Tables.Consult;
+import Tables.Veterinarian;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class ConsultRepository {
+public class VeterinarianRepository {
 
-    public void addConsult (Consult consult) {
-
+    public void addVeterinarian(Veterinarian veterinarian){
         Transaction transaction = null;
         try {
             Session session = HibernateUtils.getSessionFactory ().openSession ();
             transaction = session.beginTransaction ();
-            session.save (consult);
-            transaction.commit ();
-            session.close ();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback ();
-            }
-            e.printStackTrace ();
-        }
-    }
-
-    public List<Consult> viewAllConsults() {
-
-        Session session = HibernateUtils.getSessionFactory ().openSession ();
-
-        List<Consult> consultList = session.createQuery ("from Consult", Consult.class).list ();
-
-        for (Consult consult : consultList) {
-            System.out.println (consult.toString ());
-        }
-        session.close ();
-
-        return consultList;
-    }
-
-    public void updateConsult (Consult consult) {
-
-        Transaction transaction = null;
-        try {
-            Session session = HibernateUtils.getSessionFactory ().openSession ();
-            transaction = session.beginTransaction ();
-            session.update(consult);
+            session.save (veterinarian);
             transaction.commit ();
             session.close ();
         }catch (Exception e) {
@@ -56,20 +24,50 @@ public class ConsultRepository {
         }
     }
 
-    public void deleteConsult (Consult consult) {
+    public List<Veterinarian> seeAllVeterinarians(){
+        Session session = HibernateUtils.getSessionFactory().openSession();
+
+        List<Veterinarian> veterinarians = session.createQuery("from Veterinarian", Veterinarian.class).list();
+
+        for(Veterinarian veterinarian : veterinarians){
+            System.out.println (veterinarian.toString ());
+        }
+
+        session.close();
+
+        return veterinarians;
+    }
+
+    public void updateVeterinarian(Veterinarian veterinarian){
 
         Transaction transaction = null;
         try {
             Session session = HibernateUtils.getSessionFactory ().openSession ();
             transaction = session.beginTransaction ();
-            session.delete (consult);
+            session.update (veterinarian);
             transaction.commit ();
             session.close ();
-        } catch (Exception e) {
-            if (transaction != null) {
+        }catch (Exception e) {
+            if (transaction != null){
                 transaction.rollback ();
-            }
-            e.printStackTrace ();
+            }e.printStackTrace ();
         }
     }
+
+    public void deleteVeterinarian(Veterinarian veterinarian){
+
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtils.getSessionFactory ().openSession ();
+            transaction = session.beginTransaction ();
+            session.delete (veterinarian);
+            transaction.commit ();
+            session.close ();
+        }catch (Exception e) {
+            if (transaction != null){
+                transaction.rollback ();
+            }e.printStackTrace ();
+        }
+    }
+
 }
