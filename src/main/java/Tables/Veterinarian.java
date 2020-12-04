@@ -2,14 +2,9 @@ package Tables;
 
 import javax.persistence.*;
 import java.util.List;
-public class Veterinarian {
-
-
-
 
     @Entity
     @Table(schema = "petclinic", name = "veterinarian")
-
     public class Veterinarian {
 
         @Id
@@ -91,4 +86,3 @@ public class Veterinarian {
                     '}';
         }
     }
-}

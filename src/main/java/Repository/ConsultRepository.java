@@ -33,7 +33,7 @@ public class ConsultRepository {
         List<Consult> consultList = session.createQuery ("from Consult", Consult.class).list ();
 
         for (Consult consult : consultList) {
-            System.out.println (consult.toString ());
+            System.out.println(consult.toString ());
         }
         session.close ();
 

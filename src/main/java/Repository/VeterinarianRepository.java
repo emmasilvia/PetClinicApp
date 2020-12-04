@@ -33,7 +33,7 @@ public class VeterinarianRepository {
             System.out.println (veterinarian.toString ());
         }
 
-        session.close();
+//        session.close();
 
         return veterinarians;
     }

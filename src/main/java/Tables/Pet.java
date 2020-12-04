@@ -42,6 +42,22 @@ import java.util.List;
             this.ownerName = ownerName;
         }
 
+        public Date getDateOfBirth() {
+            return dateOfBirth;
+        }
+
+        public void setDateOfBirth(Date dateOfBirth) {
+            this.dateOfBirth = dateOfBirth;
+        }
+
+        public List<Consult> getConsultList() {
+            return consultList;
+        }
+
+        public void setConsultList(List<Consult> consultList) {
+            this.consultList = consultList;
+        }
+
         public int getPetId () {
             return petId;
         }
